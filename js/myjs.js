@@ -13,7 +13,7 @@ function getData (){
                 "openQuote" : getColor(),
                 "author": element.author,
                 "content" : element.content,
-                "background" : "images/"+(Math.floor(Math.random() * 41) + 1)+".jpg",
+                "background" : "images2/"+(Math.floor(Math.random() * 41) + 1)+".jpg",
             });
         });
         console.log(quotesData);
