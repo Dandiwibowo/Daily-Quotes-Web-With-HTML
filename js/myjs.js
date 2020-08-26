@@ -3,6 +3,9 @@ var counter = 0;
 function getColor(){
     return "#"+Math.floor(Math.random()*16777215).toString(16);
 }
+function shootId(x){
+    return document.getElementById(x);
+}
 function getData (){
     fetch("https://quotes-api.archv.id/api/quotes/v1/latest")
     .then(response => response.json())
@@ -18,35 +21,35 @@ function getData (){
         });
         console.log(quotesData);
         showData();
-        document.getElementById("loading").style.display="none";
+        shootId("loading").style.display="none";
     })
     .then()
     .catch(function() {
-        document.getElementById("loadingContent").style.display="none";
-        document.getElementById("errorContent").style.display="block";
+        shootId("loadingContent").style.display="none";
+        shootId("errorContent").style.display="block";
     });
 }
 
 function showData(){
 
-    document.getElementById('bigBanner').classList.toggle('fadeOut');
+    shootId("bigBanner").classList.toggle('fadeOut');
     setTimeout(()=>{
         // ===================== For background ================
-        document.getElementById("bigBanner").style.background=`url(${quotesData[counter].background})`;
-        document.getElementById("bigBanner").style.backgroundSize=`cover`;
-        document.getElementById("bigBanner").style.backgroundRepeat=`no-repeat`;
-        document.getElementById("bigBanner").style.backgroundPosition=`center`;
+        shootId("bigBanner").style.background=`url(${quotesData[counter].background})`;
+        shootId("bigBanner").style.backgroundSize=`cover`;
+        shootId("bigBanner").style.backgroundRepeat=`no-repeat`;
+        shootId("bigBanner").style.backgroundPosition=`center`;
         // ===================== End of background ================
         
 
         // ===================== For Text and Color ================
-        document.getElementById("openingQuotes").style.color=quotesData[counter].openQuote;
-        document.getElementById("quoteText").innerHTML=quotesData[counter].content;
-        document.getElementById("quoteCreator").innerHTML=quotesData[counter].author;
+        shootId("openingQuotes").style.color=quotesData[counter].openQuote;
+        shootId("quoteText").innerHTML=quotesData[counter].content;
+        shootId("quoteCreator").innerHTML=quotesData[counter].author;
         // ===================== End of background ================
         
 
-        document.getElementById('bigBanner').classList.toggle('fadeOut');
+        shootId("bigBanner").classList.toggle('fadeOut');
     }, 1000)
     
 }
