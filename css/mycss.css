@@ -30,11 +30,14 @@
     top:45%;
     position: absolute;
     width: 250px;
-    display: none;
+    display: flex;
     flex-direction: row;
     text-align: center;
     color: white;
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+#errorContent{
+    display: none;
 }
 .failed i{
     font-size: 80px;
