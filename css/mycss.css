@@ -30,7 +30,7 @@
     top:45%;
     position: absolute;
     width: 250px;
-    display: flex;
+    display: none;
     flex-direction: row;
     text-align: center;
     color: white;
