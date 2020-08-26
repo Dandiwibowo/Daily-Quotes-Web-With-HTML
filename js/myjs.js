@@ -1,4 +1,3 @@
-
 var quotesData = [];
 var counter = 0;
 function getColor(){
@@ -8,7 +7,6 @@ function getData (){
     fetch("https://quotes-api.archv.id/api/quotes/v1/latest")
     .then(response => response.json())
     .then(result => {
-        document.getElementById("loading").style.display="none";
         var contentData = result.content;
         contentData.forEach(element => {
             quotesData.push({
@@ -18,9 +16,11 @@ function getData (){
                 "background" : "images/"+(Math.floor(Math.random() * 41) + 1)+".jpg",
             });
         });
-        console.log(quotesData)
+        console.log(quotesData);
         showData();
+        document.getElementById("loading").style.display="none";
     })
+    .then()
     .catch(function() {
         document.getElementById("loadingContent").style.display="none";
         document.getElementById("errorContent").style.display="block";

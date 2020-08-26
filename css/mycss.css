@@ -1,6 +1,6 @@
 /* ============ loading ============= */
 #loading{
-    background: rgb(115, 219, 250);
+    background: rgb(62, 164, 247);
     /* Full height */
     height: 100%;
     width: 100%;
@@ -233,6 +233,26 @@ body {
     right : 16%;
 }
 
+#previousMinButon{
+    position : fixed;
+    top : 0px;
+    left : 0px;
+    z-index: 1;
+    width: 40%;
+    height: 100%;
+    display: none;
+}
+
+#nextMinButon{
+    position : fixed;
+    top : 0px;
+    right : 0px;
+    z-index: 1;
+    width: 60%;
+    height: 100%;
+    display: none;
+}
+
 @media (max-width: 991.98px) {
     .cardQuotes {
         width: 400px;
@@ -276,6 +296,7 @@ body {
     #quoteText {
         font-size: 20px;
         line-height: 30px;
+        padding: 10px;
     }
 
     #quoteCreator {
@@ -287,11 +308,19 @@ body {
     }
 
     #previousButon{
-        left : 4%;
+        display: none;
     }
     
     #nextButon{
-        right : 4%;
+        display: none;
+    }
+
+    #previousMinButon{
+        display: block;
+    }
+    
+    #nextMinButon{
+        display: block
     }
 }
 
@@ -315,14 +344,7 @@ body {
         margin-top:10px;
         font-size: 12px;
     }
-    #previousButon{
-        left : 2%;
-    }
     
-    #nextButon{
-        right : 2%;
-    }
-
 }
 
 @media (max-width: 330px) { 
