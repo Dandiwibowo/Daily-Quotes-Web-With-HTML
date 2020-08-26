@@ -4,12 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daily Quotes</title>
 
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/mycss.css">
 </head>
 <body>
-    <div id="bigBanner">
+    <div id="bigBanner" class="myBanner">
         <div class="container">
             <div class="cardQuotes">
                 <span id="openingQuotes">&#8220;</span>
@@ -22,8 +25,28 @@
         </div>
     </div>
 
-    <div id="previousButon" class="button-round">&#8249;</div>
-    <div id="nextButon" class="button-round">&#8250;</div>
+    <div id="previousButon" class="button-round" onclick="prevQuotes()">&#8249;</div>
+    <div id="nextButon" class="button-round" onclick="nextQuotes()">&#8250;</div>
+
+
+    <div id="loading">
+        <div class="wrapper" id="loadingContent">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <div class="shadow"></div>
+            <span>Loading</span>
+        </div>
+
+        <div class="failed" id="errorContent">
+            <i class="material-icons">sentiment_very_dissatisfied</i>
+            <p>Sorry something went wrong</p>
+            <a href="index.html">refresh page</a>
+        </div>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
