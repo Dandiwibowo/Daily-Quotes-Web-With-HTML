@@ -40,7 +40,7 @@ function showData(){
         
 
         // ===================== For Text and Color ================
-        document.getElementById("openingQuotes").style.color=`url(${quotesData[counter].color})`;
+        document.getElementById("openingQuotes").style.color=quotesData[counter].openQuote;
         document.getElementById("quoteText").innerHTML=quotesData[counter].content;
         document.getElementById("quoteCreator").innerHTML=quotesData[counter].author;
         // ===================== End of background ================
