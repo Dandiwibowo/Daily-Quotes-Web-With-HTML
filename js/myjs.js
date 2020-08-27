@@ -7,7 +7,12 @@ function shootId(x){
     return document.getElementById(x);
 }
 function getData (){
-    fetch("https://quotes-api.archv.id/api/quotes/v1/latest")
+    const controller = new AbortController();
+    const signal = controller.signal;
+
+    setTimeout(() => controller.abort(), 10000);
+
+    fetch("https://quotes-api.archv.id/api/quotes/v1/latest", { signal })
     .then(response => response.json())
     .then(result => {
         var contentData = result.content;
@@ -16,15 +21,19 @@ function getData (){
                 "openQuote" : getColor(),
                 "author": element.author,
                 "content" : element.content,
-                "background" : "images2/"+(Math.floor(Math.random() * 41) + 1)+".jpg",
+                "background" : "images/"+(Math.floor(Math.random() * 41) + 1)+".jpg",
             });
         });
         console.log(quotesData);
         showData();
         shootId("loading").style.display="none";
-    })
-    .then()
-    .catch(function() {
+    }).catch(err => {
+        if (err.name === 'AbortError') {
+            shootId("errorText").innerHTML = "Request Timeout";
+            shootId("errorImages").src="images/timeout.gif";
+        } else {
+          console.error('Uh oh, an error!', err);
+        }
         shootId("loadingContent").style.display="none";
         shootId("errorContent").style.display="block";
     });
