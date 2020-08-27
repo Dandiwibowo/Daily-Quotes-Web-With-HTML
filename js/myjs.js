@@ -6,13 +6,14 @@ function getColor(){
 function shootId(x){
     return document.getElementById(x);
 }
-function getData (){
+async function getData (){
     const controller = new AbortController();
     const signal = controller.signal;
+    var errorStat = 0;
 
     setTimeout(() => controller.abort(), 10000);
 
-    fetch("https://quotes-api.archv.id/api/quotes/v1/latest", { signal })
+    await fetch("https://quotes-api.archv.id/api/quotes/v1/latest", { signal })
     .then(response => response.json())
     .then(result => {
         var contentData = result.content;
@@ -26,17 +27,23 @@ function getData (){
         });
         console.log(quotesData);
         showData();
-        shootId("loading").style.display="none";
     }).catch(err => {
-        if (err.name === 'AbortError') {
-            shootId("errorText").innerHTML = "Ouch, Request Timeout";
-            shootId("errorImages").src="images/timeout.gif";
-        } else {
-          console.error('Uh oh, an error!', err);
-        }
-        shootId("loadingContent").style.display="none";
-        shootId("errorContent").style.display="block";
+        errorStat = err.name === 'AbortError'? 1 : 2;
     });
+
+    setTimeout(() => {
+        if(errorStat){
+            if(errorStat == 1){
+                shootId("errorText").innerHTML = "Ouch, Request Timeout";
+                shootId("errorImages").src="images/timeout.gif";
+            }
+            shootId("loadingContent").style.display="none";
+            shootId("errorContent").style.display="block";
+        }
+        else
+            shootId("loading").style.display="none";
+    }, 1000);
+    
 }
 
 function showData(){
