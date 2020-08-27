@@ -29,7 +29,7 @@ function getData (){
         shootId("loading").style.display="none";
     }).catch(err => {
         if (err.name === 'AbortError') {
-            shootId("errorText").innerHTML = "Request Timeout";
+            shootId("errorText").innerHTML = "Ouch, Request Timeout";
             shootId("errorImages").src="images/timeout.gif";
         } else {
           console.error('Uh oh, an error!', err);
